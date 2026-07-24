@@ -1,9 +1,10 @@
+#===============IMPORT's=========================
+import random
 #===============FUNCIONES========================
-
 #Función para saludar al jugador 
 def saludar_jugador(nombre, vida):
     print(f"{nombre} tiene {vida} puntos de vida")
-
+#Función de estado del jugador
 def estado_de_salud(vida):
     if vida <= 0 : 
         print("Estás muerto")
@@ -13,7 +14,6 @@ def estado_de_salud(vida):
         print("Estas en buen estado de salud ")
     return vida > 0
 #===============VARIABLES GLOBALES===============
-
 vida_jugador = 20
 nombre_jugador = "Joel"
 ataque_jugador = 5
@@ -23,41 +23,68 @@ enemigos = [
     {"nombre": "Orco", "vida": 15, "ataque": 10},
 ]
 sala_actual= 1
-
 #===============FLUJO PRINCIPAL==================
-
 #Saludo inicial 
 saludar_jugador(nombre_jugador, vida_jugador)
-
-#Bucle de estado de las salas 
 while sala_actual <= 5:
-    print(f"Estas en la sala {sala_actual}")
+    if sala_actual ==  1: 
+            while enemigos[0]['vida'] > 0 and vida_jugador > 0:
+                print("En combate")
+                enemigos[0]['vida']= enemigos[0]['vida'] - ataque_jugador
+                if enemigos[0]['vida'] <=0:
+                    print(f"La vida del {enemigos[0]['nombre']} es {enemigos[0]['vida']}")
+                    if vida_jugador > 0:
+                        print(f"Ganaste la pelea contra el {enemigos[0]['nombre']}")
+                    elif vida_jugador <=0:
+                        print(f"perdiste la pelea contra el {enemigos[0]['nombre']}")
+                        break
+                    print("Pasas a la siguiente sala")
+                    break
+                else:
+                    print(f"La vida del {enemigos[0]['nombre']} es {enemigos[0]['vida']}")
+                    vida_jugador = vida_jugador - enemigos[0]['ataque']
+    elif sala_actual == 2:
+        print(f"Sala {sala_actual}: ramdom")
+    elif sala_actual == 3:
+        while enemigos[1]['vida'] > 0 and vida_jugador > 0:
+                        print("En combate")
+                        enemigos[1]['vida']= enemigos[1]['vida'] - ataque_jugador
+                        if enemigos[1]['vida'] <=0:
+                            print(f"La vida del {enemigos[1]['nombre']} es {enemigos[1]['vida']}")
+                            if vida_jugador > 0:
+                                print(f"Ganaste la pelea contra el {enemigos[1]['nombre']}")
+                            elif vida_jugador <=0:
+                                print(f"perdiste la pelea contra el {enemigos[1]['nombre']}")
+                                break
+                            print("Pasas a la siguiente sala")
+                            break
+                        else:
+                            print(f"La vida del {enemigos[1]['nombre']} es {enemigos[1]['vida']}")
+                            vida_jugador = vida_jugador - enemigos[1]['ataque']
+                            saludar_jugador(nombre_jugador, vida_jugador)
+                            estado_de_salud(vida_jugador)
+    elif sala_actual == 4:
+        print(f"Sala {sala_actual}: ramdom")
+    elif sala_actual == 5:
+        while enemigos[2]['vida'] > 0 and vida_jugador > 0:
+                        print("En combate")
+                        enemigos[2]['vida']= enemigos[2]['vida'] - ataque_jugador
+                        if enemigos[2]['vida'] <=0:
+                            print(f"La vida del {enemigos[2]['nombre']} es {enemigos[2]['vida']}")
+                            if vida_jugador > 0:
+                                print(f"Ganaste la pelea contra el {enemigos[2]['nombre']}")
+                            elif vida_jugador <=0:
+                                print(f"perdiste la pelea contra el {enemigos[2]['nombre']}")
+                                break
+                            print("Pasas a la siguiente sala")  
+                            break
+                        else:
+                            print(f"La vida del {enemigos[2]['nombre']} es {enemigos[2]['vida']}")
+                            vida_jugador = vida_jugador - enemigos[2]['ataque']
     sala_actual += 1
-
-print("llegaste al final de la dunggeon")
-
-for i in range(len(enemigos)):
-    print(f"Te estás enfrentando a un {enemigos[i]['nombre']}")
-    while enemigos[i]['vida'] > 0 and vida_jugador > 0:
-        enemigos[i]['vida']= enemigos[i]['vida'] - ataque_jugador
-        if enemigos[i]['vida'] <=0:
-            break
-        else:
-            print(f"La vida del {enemigos[i]['nombre']} es {enemigos[i]['vida']}")
-            vida_jugador = vida_jugador - enemigos[i]['ataque']
-            saludar_jugador(nombre_jugador, vida_jugador)
-            estado_de_salud(vida_jugador)
-    if vida_jugador > 0:
-        print(f"Ganaste la pelea contra el {enemigos[i]['nombre']}")
-    elif vida_jugador <=0:
-        print(f"perdiste la pelea contra el {enemigos[i]['nombre']}")
-        break
-
 sigue_vivo = estado_de_salud(vida_jugador)
 
 if sigue_vivo:
     print("Ganaste el juego")
 else: 
     print("perdiste el juego")
-
-#===============Test Zone========================
