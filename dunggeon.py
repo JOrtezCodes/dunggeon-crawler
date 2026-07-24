@@ -14,7 +14,7 @@ def estado_de_salud(vida):
     return vida > 0
 #===============VARIABLES GLOBALES===============
 
-vida_jugador = 50
+vida_jugador = 20
 nombre_jugador = "Joel"
 ataque_jugador = 5
 enemigos = [
@@ -40,10 +40,13 @@ for i in range(len(enemigos)):
     print(f"Te estás enfrentando a un {enemigos[i]['nombre']}")
     while enemigos[i]['vida'] > 0 and vida_jugador > 0:
         enemigos[i]['vida']= enemigos[i]['vida'] - ataque_jugador
-        print(f"La vida del {enemigos[i]['nombre']} es {enemigos[i]['vida']}")
-        vida_jugador = vida_jugador - enemigos[i]['ataque']
-        saludar_jugador(nombre_jugador, vida_jugador)
-        estado_de_salud(vida_jugador)
+        if enemigos[i]['vida'] <=0:
+            break
+        else:
+            print(f"La vida del {enemigos[i]['nombre']} es {enemigos[i]['vida']}")
+            vida_jugador = vida_jugador - enemigos[i]['ataque']
+            saludar_jugador(nombre_jugador, vida_jugador)
+            estado_de_salud(vida_jugador)
     if vida_jugador > 0:
         print(f"Ganaste la pelea contra el {enemigos[i]['nombre']}")
     elif vida_jugador <=0:
