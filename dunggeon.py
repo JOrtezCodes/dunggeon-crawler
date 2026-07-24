@@ -11,9 +11,10 @@ def estado_de_salud(vida):
         print("CUIDADO! Tienes poca vida")
     else:
         print("Estas en buen estado de salud ")
+    return vida > 0
 #===============VARIABLES GLOBALES===============
 
-vida_jugador = 20
+vida_jugador = 50
 nombre_jugador = "Joel"
 ataque_jugador = 5
 enemigos = [
@@ -48,17 +49,12 @@ for i in range(len(enemigos)):
     elif vida_jugador <=0:
         print(f"perdiste la pelea contra el {enemigos[i]['nombre']}")
         break
-if vida_jugador <= 0:
-    print("perdiste el juego")
-else: 
+
+sigue_vivo = estado_de_salud(vida_jugador)
+
+if sigue_vivo:
     print("Ganaste el juego")
-
-
-
+else: 
+    print("perdiste el juego")
 
 #===============Test Zone========================
-
-
-
-# for enemigo in enemigos:
-#     print(f"{enemigo['nombre']} tiene {enemigo['vida']} pupntos de vida y ataca con{enemigo['ataque']} puntos de ataque")
