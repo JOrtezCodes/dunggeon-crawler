@@ -79,7 +79,7 @@ while sala_actual <= 5:
                             print("Pasas a la siguiente sala")  
                             break
                         else:
-                            print(f"La vida del {enemigos[2]['nombre']} es {enemigos[2]['vida']}")
+                            print(f"La vida del {enemigos[2]['nombre']} es {enemigos[2]['vida']} puntos de vida")
                             vida_jugador = vida_jugador - enemigos[2]['ataque']
     sala_actual += 1
 sigue_vivo = estado_de_salud(vida_jugador)
