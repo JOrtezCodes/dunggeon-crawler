@@ -1,5 +1,4 @@
 #===============IMPORT's=========================
-import random
 #===============FUNCIONES========================
 #Función para saludar al jugador 
 def saludar_jugador(nombre, vida):
