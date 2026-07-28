@@ -15,7 +15,7 @@ def estado_de_salud(vida):
     return vida > 0
 #===============VARIABLES GLOBALES===============
 vida_jugador = 20
-nombre_jugador = "Joel"
+nombre_jugador = "Lucas"
 ataque_jugador = 5
 enemigos = [
     {"nombre": "Goblin", "vida": 10, "ataque": 3},
